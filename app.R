@@ -10,3 +10,5 @@ server <- function(input, output, session) {
   xyz <- reactive(xy() * yz())
   output$out <- renderText(paste0("Result: ", xyz()))
 }
+
+shinyApp(ui,server)

@@ -1,11 +1,9 @@
-context("app")
-
-testServer(expr = {
-  # Set the `size` slider and check the output
-  session$setInputs(size = 6)
-  expect_equal(output$sequence, "1 2 3 4 5 6")
-
-  session$setInputs(size = 12)
-  expect_equal(output$sequence, "1 10 11 12 2 3 4 5 6 7 8 9")
-
+test_that("reactives and output updates", {
+  testServer(server, {
+    session$setInputs(x = 1, y = 1, z = 1)
+    expect_equal(xy(), 0)
+    expect_equal(yz(), 2)
+    expect_equal(output$out, "Result: 0")
+  })
 })
+
